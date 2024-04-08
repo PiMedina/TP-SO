@@ -17,10 +17,12 @@ int crear_conexion(char* ip, char* puerto, char* nombreDelProceso, t_log* logger
                                 server_info->ai_protocol);
 
 	// Ahora que tenemos el socket, vamos a conectarlo
-	if(connect(socket_cliente, server_info->ai_addr, server_info->ai_addrlen))
+	if(connect(socket_cliente, server_info->ai_addr, server_info->ai_addrlen) == 0)
         log_info(logger, "Conectado con el Modulo: %s ", nombreDelProceso);
 	else
         log_error(logger, "No se pudo conectar con el Modulo: %s", nombreDelProceso);
+		log_error(logger, "Finalizando Modulo:");
+		exit(EXIT_FAILURE);
 	
 	// liberar memoria
 	freeaddrinfo(server_info);

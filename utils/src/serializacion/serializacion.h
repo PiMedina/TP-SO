@@ -6,6 +6,7 @@
  #include <stdint.h> // para los diferentes int
  #include <string.h>
  #include <sys/socket.h>
+ #include <commons/log.h>
 
  /*
    1 -> primero creamos un buffer para meter todos los datos a serializar
@@ -80,6 +81,24 @@
  // Lee un string y su longitud del buffer y avanza el offset
  char* buffer_read_string(t_buffer *buffer);
 
+//-------------------------------------- SERIALIZACION DE PAQUETE --------------------------------
+ // serializamos un paquete, retorno un stream con el paquete serializado
+ // no olvidar liberar el void* y el paquete y el paquete.
+ void* serializar_paquete(t_paquete* paquete, size_t* size_a_enviar);
+
+//-------------------------------------- HANDSHAKE ----------------------------------------------
+ 
+ // envia handshake al servidor e informa si fue exitoso
+ void enviar_handshake(int conexion, int codigo_operacion, char* modulo_origen, char* modulo_destino, t_log* logger);
+ 
+ // retorna de que modulo_cliente se realiza el handshake
+ char* recibir_handshake(int fd_cliente);
+
+ // nos fijamos si el handshake fue exitoso
+ void estado_handshake(int conexion, char* modulo, t_log* logger);
+
+ // respondemos que el handShake fue exitoso
+ void responder_handshake(int fd_cliente);
 
 //-------------------------------------- EJEMPLO -------------------------------------------------
  

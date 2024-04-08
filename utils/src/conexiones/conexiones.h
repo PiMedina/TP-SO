@@ -21,7 +21,7 @@ typedef struct {
     char* server_name;
 }t_procesar_conexion_args;
 
-// Crear un socket cliente para conectarse
+// Crear un socket cliente para conectarse - termina el proceso si no pudo conextarse
 int crear_conexion(char *ip, char* puerto, char* nombreDelProceso, t_log* logger);
 
 // Crear un socket servidor para recibir clientes
