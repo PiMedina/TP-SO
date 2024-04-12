@@ -4,5 +4,6 @@
 extern int conexion_cpu_dispatch;
 extern int conexion_cpu_interrupt;
 extern int conexion_memoria;
+extern int server_fd;
 
 #endif 

@@ -21,8 +21,8 @@ int crear_conexion(char* ip, char* puerto, char* nombreDelProceso, t_log* logger
         log_info(logger, "Conectado con el Modulo: %s ", nombreDelProceso);
 	else
         log_error(logger, "No se pudo conectar con el Modulo: %s", nombreDelProceso);
-		log_error(logger, "Finalizando Modulo:");
-		exit(EXIT_FAILURE);
+		//log_error(logger, "Finalizando Modulo:");
+		//exit(EXIT_FAILURE);
 	
 	// liberar memoria
 	freeaddrinfo(server_info);
@@ -30,7 +30,7 @@ int crear_conexion(char* ip, char* puerto, char* nombreDelProceso, t_log* logger
 	return socket_cliente;
 }
 
-int iniciar_servidor(char* ip, char* puerto, t_log* logger){
+int iniciar_servidor(char* name ,char* ip, char* puerto, t_log* logger){
 
 	int socket_servidor;
 
@@ -57,7 +57,7 @@ int iniciar_servidor(char* ip, char* puerto, t_log* logger){
 
 	freeaddrinfo(servinfo);
 
-	log_info(logger, "Servidor Levantado en IP:%s Puerto:%s", ip, puerto);
+	log_info(logger, "Servidor: %s Levantado en IP:%s Puerto:%s",name, ip, puerto);
 
 	return socket_servidor;
 }

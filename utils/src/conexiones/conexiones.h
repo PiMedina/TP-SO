@@ -25,7 +25,7 @@ typedef struct {
 int crear_conexion(char *ip, char* puerto, char* nombreDelProceso, t_log* logger);
 
 // Crear un socket servidor para recibir clientes
-int iniciar_servidor(char* ip, char* puerto, t_log* logger);
+int iniciar_servidor(char* name, char* ip, char* puerto, t_log* logger);
 
 // Escuchar a nuevos clientes, crear un hilo si un cliente se conecta, recibe la funcion que va a tomar el hilo
 int server_listen(t_log* logger, char* server_name, int server_socket, void(*func_procesar_conexion)(void*));
