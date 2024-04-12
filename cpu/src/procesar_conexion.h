@@ -6,6 +6,7 @@
 #include <serializacion/serializacion.h>
 #include "generales.h"
 
-void procesar_conexion_io(void *args);
+
+void procesar_conexion_kernel(void *args);
 
 #endif 
